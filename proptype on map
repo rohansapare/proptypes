@@ -1,0 +1,34 @@
+import React, { Component } from 'react';
+import Items from '../mock/MockItems.js';
+import Item from './Item';
+import PropTypes from 'prop-types';
+
+class ItemList extends Component {
+
+  constructor( props) {
+    super( props);
+    this.state = {
+      items: Items,
+    };
+  }
+
+  render() {
+    const {items} = this.state;
+    return(
+        <div>
+          <ol className="item">
+             {
+              items.map( item => (
+                  <Item title={item.title} price={item.price}/>
+              ))
+             }
+          </ol>
+        </div>
+    );
+  }
+}
+ItemList.propTypes = {
+  Items : PropTypes.array.isRequired
+}
+
+export default ItemList;
